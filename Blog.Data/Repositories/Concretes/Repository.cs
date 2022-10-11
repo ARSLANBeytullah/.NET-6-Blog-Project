@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Data.Repositories.Concretes
 {
+
     public class Repository<T> : IRepository<T> where T : class, IEntityBase, new()
     {
         private readonly AppDbContext dbContext;
@@ -20,8 +21,7 @@ namespace Blog.Data.Repositories.Concretes
         }
         private DbSet<T> Table { get => dbContext.Set<T>(); }
 
-
-        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> predicate, Expression<Func<T, object>>[] includeProperties)
+        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = Table;
             if (predicate != null)
@@ -33,13 +33,12 @@ namespace Blog.Data.Repositories.Concretes
 
             return await query.ToListAsync();
         }
-
         public async Task AddAsync(T entity)
         {
-            await dbContext.AddAsync(entity);
+            await Table.AddAsync(entity);
         }
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, Expression<Func<T, object>>[] includeProperties)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = Table;
             query = query.Where(predicate);
@@ -58,13 +57,13 @@ namespace Blog.Data.Repositories.Concretes
 
         public async Task<T> UpdateAsync(T entity)
         {
-            await Task.Run(() => { Table.Update(entity); });
+            await Task.Run(() => Table.Update(entity));
             return entity;
         }
 
         public async Task DeleteAsync(T entity)
         {
-            await Task.Run(() => { Table.Remove(entity); });
+            await Task.Run(() => Table.Remove(entity));
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)

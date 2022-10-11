@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using Blog.Data.Context;
 using Blog.Data.Extensions;
+using Blog.Service.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.LoadDataLayerExtension(builder.Configuration);
+builder.Services.LoadServiceLayerExtension();
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation(); //AddRazorRuntimeCompilation methodu sayesin de projeyi tekrar ayaða kaldýrmadan yaptýðýmýz deðiþikleri görebiliyoruz.
 
 
 var app = builder.Build();
@@ -25,8 +28,14 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapAreaControllerRoute(   //Admin için tanýmladýðým rota.
+        name: "Admin",
+        areaName: "Admin",
+        pattern: "Admin/{Controller=Home}/{Action=Index}/{id?}"
+        );
+    endpoints.MapDefaultControllerRoute();  //Admin rotasýna girmesse eðer normal default rota tercih edilecek.
+});
 
 app.Run();

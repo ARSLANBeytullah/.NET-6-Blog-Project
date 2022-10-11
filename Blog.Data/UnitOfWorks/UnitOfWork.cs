@@ -1,5 +1,6 @@
 ﻿using Blog.Data.Context;
 using Blog.Data.Repositories.Abstractions;
+using Blog.Data.Repositories.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace Blog.Data.UnitOfWorks
 
         IRepository<T> IUnitOfWork.GetRepository<T>()
         {
-            throw new NotImplementedException();
+            return new Repository<T>(dbContext);
         }
     }
 }
