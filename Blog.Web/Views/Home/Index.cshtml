@@ -1,4 +1,4 @@
-﻿@model List<Article>
+﻿@model List<ArticleDto>
 <h1>Default Area içerisindesin</h1><br /><br />
 @{
     ViewData["Title"] = "Home Page";
@@ -13,5 +13,6 @@
 {
      <h1>@article.Title</h1>   <br />  
      <h3>@article.Content</h3> 
+     <h3>@article.CreatedBy</h3> 
      <br/> <br/>
 }
