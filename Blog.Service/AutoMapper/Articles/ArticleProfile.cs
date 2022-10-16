@@ -15,5 +15,5 @@ namespace Blog.Service.AutoMapper.Articles
         {
             CreateMap<ArticleDto, Article>().ReverseMap(); //ArticleDto istersem Article ile mapleme yap. Article istersem de ArticleDto ile mapleme yap demiş oldum.
         }
-    }
+    } 
 }
