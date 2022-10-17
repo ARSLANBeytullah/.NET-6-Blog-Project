@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Data.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         protected AppDbContext()
         {
