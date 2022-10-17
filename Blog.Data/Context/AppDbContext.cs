@@ -1,4 +1,5 @@
 ﻿using Blog.Entity.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Blog.Data.Context
         protected AppDbContext()
         {
         }
-
+        //deneme
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
