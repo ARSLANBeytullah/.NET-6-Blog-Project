@@ -13,7 +13,6 @@ namespace Blog.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<AppRole> builder)
         {
-            // Primary key
             builder.HasKey(r => r.Id);
 
             // Index for "normalized" role name to allow efficient lookups
@@ -38,25 +37,23 @@ namespace Blog.Data.Mappings
             // Each Role can have many associated RoleClaims
             builder.HasMany<AppRoleClaim>().WithOne().HasForeignKey(rc => rc.RoleId).IsRequired();
 
-
             builder.HasData(new AppRole
             {
-                Id = Guid.Parse("F758FAE1-935B-4FFB-A82F-DD6FD4AD7219"),
+                Id = Guid.Parse("16EA936C-7A28-4C30-86A2-9A9704B6115E"),
                 Name = "Superadmin",
                 NormalizedName = "SUPERADMIN",
                 ConcurrencyStamp = Guid.NewGuid().ToString()
             },
-
             new AppRole
             {
-                Id = Guid.Parse("2E884348-1406-4409-972C-EA82F186A2CF"),
+                Id = Guid.Parse("7CB750CF-3612-4FB4-9F7D-A38BA8F16BF4"),
                 Name = "Admin",
                 NormalizedName = "ADMIN",
                 ConcurrencyStamp = Guid.NewGuid().ToString()
             },
             new AppRole
             {
-                Id = Guid.Parse("ED101E7F-B43D-489C-B124-2EFA21108FAC"),
+                Id = Guid.Parse("EDF6C246-41D8-475F-8D92-41DDDAC3AEFB"),
                 Name = "User",
                 NormalizedName = "USER",
                 ConcurrencyStamp = Guid.NewGuid().ToString()

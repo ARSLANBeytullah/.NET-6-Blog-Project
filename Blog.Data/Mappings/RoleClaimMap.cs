@@ -13,11 +13,10 @@ namespace Blog.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<AppRoleClaim> builder)
         {
-            // Primary key
-            builder.HasKey(uc => uc.Id);
+            builder.HasKey(rc => rc.Id);
 
-            // Maps to the AspNetUserClaims table
-            builder.ToTable("AspNetUserClaims");
+            // Maps to the AspNetRoleClaims table
+            builder.ToTable("AspNetRoleClaims");
         }
     }
 }

@@ -14,7 +14,6 @@ namespace Blog.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
-            //Fluent Api
             builder.HasKey(u => u.Id);
 
             // Indexes for "normalized" username and email, to allow efficient lookups
@@ -50,14 +49,14 @@ namespace Blog.Data.Mappings
 
             var superadmin = new AppUser
             {
-                Id = Guid.Parse("ED101E7F-B43D-489C-B124-2EFA21108FAC"),
+                Id = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C"),
                 UserName = "superadmin@gmail.com",
                 NormalizedUserName = "SUPERADMIN@GMAIL.COM",
                 Email = "superadmin@gmail.com",
                 NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                 PhoneNumber = "+905439999999",
-                FirstName = "Beytullah",
-                LastName = "Arslan",
+                FirstName = "Cem",
+                LastName = "Keskin",
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString(),
@@ -65,10 +64,9 @@ namespace Blog.Data.Mappings
             };
             superadmin.PasswordHash = CreatePasswordHash(superadmin, "123456");
 
-
             var admin = new AppUser
             {
-                Id = Guid.Parse("CFE8C4D2 - 9077 - 48D8 - 81D7 - 707CD32D083F"),
+                Id = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427"),
                 UserName = "admin@gmail.com",
                 NormalizedUserName = "ADMIN@GMAIL.COM",
                 Email = "admin@gmail.com",
@@ -80,11 +78,11 @@ namespace Blog.Data.Mappings
                 EmailConfirmed = false,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 ImageId = Guid.Parse("D16A6EC7-8C50-4AB0-89A5-02B9A551F0FA")
-
             };
             admin.PasswordHash = CreatePasswordHash(admin, "123456");
 
             builder.HasData(superadmin, admin);
+
         }
         private string CreatePasswordHash(AppUser user, string password)
         {

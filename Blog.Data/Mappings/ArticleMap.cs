@@ -19,7 +19,7 @@ namespace Blog.Data.Mappings
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
-                UserId = Guid.Parse("ED101E7F-B43D-489C-B124-2EFA21108FAC")
+                UserId = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C")
             },
             new Article
             {
@@ -32,7 +32,7 @@ namespace Blog.Data.Mappings
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
-                UserId = Guid.Parse("CFE8C4D2 - 9077 - 48D8 - 81D7 - 707CD32D083F")
+                UserId = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427")
             });
         }
     }
