@@ -1,2 +1,2 @@
 # .NET-6-Blog-Project
-.Net Core, N-Tier Architecture, EntityFramework 6
+C#, .Net Core, N-Tier Architecture, EntityFramework 6, Bootstrap, Jquery, Ajax 
